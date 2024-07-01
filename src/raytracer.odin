@@ -54,11 +54,12 @@ render_image :: proc() {
 
 	focal_length: f32 = 1.0
 	viewport_height: f32 = 2.0
-	viewport_width: f32 = viewport_height * auto_cast (image_width / image_height)
+	viewport_width: f32 = viewport_height * (cast(f32)image_width / cast(f32)image_height)
 
 	camera_center := vec3{0, 0, 0}
 	viewport_u := vec3{viewport_width, 0, 0}
 	viewport_v := vec3{0, -viewport_height, 0}
+	log.infof("viewport width: %v, height: %v", viewport_width, viewport_height)
 
 	pixel_delta_u := viewport_u / cast(f32)image_width
 	pixel_delta_v := viewport_v / cast(f32)image_height
